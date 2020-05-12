@@ -1,0 +1,123 @@
+/*FONDO*/
+body{
+    background-image: url('../img/fondo.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.fondo{
+    background-color: black;
+        
+}
+
+/*NAV*/
+header{
+    color:black;
+}
+#navegador ul{
+    list-style-position: none;
+    margin:0px;
+    padding: 0px;
+
+  
+}
+#navegador ul li {
+    display: inline-block;
+
+}
+#navegador ul li a{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    font-size: 20px;
+    line-height: normal;
+    /*display: inline-block;*/
+    float:left;
+    display: flex;
+    text-align: center;
+
+}
+#navegador ul a:hover{
+    background-color:firebrick;
+           
+}
+#footer ul a:hover{
+    background-color:firebrick;    
+    
+    
+}
+
+/*TÍTULOS*/
+.nov{
+    font-family: 'Roboto', sans-serif;
+    color: aliceblue;
+ 
+
+}
+#cd{
+ margin-bottom: 20px;
+}
+
+/*FORMULARIO*/
+.formulario{
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+    
+}
+.info{
+    text-align: right;
+
+}
+
+.frase{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    margin-left: 65px;
+  
+}
+.frase2{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    
+}
+.contacto{
+padding: auto;
+}
+
+/*#bloque{
+    margin-top: 50px;
+    padding-top: 50px;
+}
+*/
+
+/*FOOTER*/
+#footer{ 
+    background-color: black;
+    margin: 0;
+    padding: 0;
+   
+}
+#footer p{ 
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    color: white; 
+    margin-bottom: auto;
+}
+#footer ul{
+    list-style-type: none;
+    margin: 0;
+    padding:0;  
+}
+#footer ul li{
+    display: inline-block;   
+}
+#footer ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    float:left;
+    margin-bottom: auto;
+}
