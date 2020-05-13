@@ -29,7 +29,7 @@ if (in_array($fileActualExt, $allowed)){
             $fileNewName = uniqid('', true).".".$fileActualExt;
             $fileDestination = 'uploads/'. $fileNewName;
             move_uploaded_file($fileTmpName, $fileDestination);
-            header("Location: manejo_excel.php?uploadsuccess?file=$fileDestination");
+            header("Location: index.php?page=1uploadsuccess?file=$fileDestination");
 
         }else{
             header("Location: index.php?error?error=C");

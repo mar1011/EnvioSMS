@@ -169,6 +169,8 @@ endif;
 if(!empty($_GET["page"])){
     if($_GET["page"]==0){
         include_once("secciones/inicio.php");
+    }if($_GET["page"]==1){
+        include_once("secciones/prueba.php");
     }
     if($_GET["page"]==2){
         include_once("secciones/galeria.php");

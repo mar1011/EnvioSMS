@@ -39,10 +39,10 @@ echo '<table border="1" cellpadding="8" style="margin-left:250px;">';
 foreach ($sheet->getRowIterator() as $row){
     $cellIterator = $row->getCellIterator();
     $cellIterator->setIterateOnlyExistingCells(false);
-    
     echo '<tr>';
     foreach ($cellIterator as $cell){
         if(!is_null($cell)){
+            //el dato de la celda
             $value = $cell->getCalculatedValue();
             echo '<td>' . $value .'</td>';
         }
