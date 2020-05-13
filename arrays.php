@@ -11,5 +11,5 @@ $nav_panel = [];
 
 //ARRAY DEL FOOTER
 $footer = [];
-$footer[]=["href" => "#", "target" => "_blank", "img" => "img/github.png" , "alt" => "GitHub", "width" => "30", "title" => "GitHub" ];
+$footer[]=["href" => "https://github.com/mar1011/EnvioSMS", "target" => "_blank", "img" => "img/github.png" , "alt" => "GitHub", "width" => "30", "title" => "GitHub" ];
 

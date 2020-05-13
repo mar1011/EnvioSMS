@@ -26,6 +26,9 @@ $ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
 //array de datos
 $datos = Array();
 
+//contador
+$counter = 0;
+
 /** Load $inputFileName to a Spreadsheet Object  **/
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($ruta);
 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
@@ -45,22 +48,48 @@ for ($row = 2; $row <= $highestRow; ++$row) {
     $telefono= $worksheet->getCell('B'.$row)->getValue();
     $banco = $worksheet->getCell('C'.$row)->getValue();
 
+  
+
     echo '<tr>' . PHP_EOL;
     echo '<td>'.$nombre.'</td>';
     echo '<td>'.$telefono.'</td>';
     echo '<td>'.$banco.'</td>';
     echo '</tr>' . PHP_EOL;
    //array dinámico
-   $datos[$row] = Array(
+   $datos[$counter] = Array(
     "nombre"=>$nombre,
     "telefono"=>$telefono,
     "banco"=>$banco
 );
 
+
+//aumento el contador
+$counter = $counter + 1;
 }
+
 echo '</table>' . PHP_EOL;
     
-print_r($datos);
+var_dump($datos);
 
 ?>
+</div>
+<div class="container nov">
+<div class="col-md-12 text-center">
+<?php
+
+
+$largoArray=sizeof($datos);
+echo $largoArray;
+for($i=0;$i<=$largoArray; ++$i):
+   
+?>
+<!--<p>Mensaje dirigido a <?=$datos[$i]?>, cuyo teléfono es <?=$datos[$i]?> pagar deuda al <?=$datos[$i]?> </p>
+
+<?php
+
+    endfor;
+?>
+   </div>
+   
+</div>
 
