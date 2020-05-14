@@ -1,4 +1,5 @@
 <?php
+include_once("secciones/prueba.php");
 
 if (isset($_POST['submit'])){
     //El archivo que se cargó
@@ -29,7 +30,9 @@ if (in_array($fileActualExt, $allowed)){
             $fileNewName = uniqid('', true).".".$fileActualExt;
             $fileDestination = 'uploads/'. $fileNewName;
             move_uploaded_file($fileTmpName, $fileDestination);
-            header("Location: index.php?page=1uploadsuccess?file=$fileDestination");
+            $ruta = $fileDestination;
+            
+            header("Location: index.php?page=1&status=uploadsuccess&ruta=$fileDestination");
 
         }else{
             header("Location: index.php?error?error=C");
