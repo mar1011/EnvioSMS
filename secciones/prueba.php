@@ -7,11 +7,11 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 //ruta
 
-//$ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
+$ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
 
 //recupero la ruta de la URL 
-$ruta=$_GET["ruta"];
-
+//$ruta=$_GET["ruta"];
+//echo $ruta;
 
 //array de datos
 $datos = Array();

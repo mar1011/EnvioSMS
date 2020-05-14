@@ -32,7 +32,7 @@ if (in_array($fileActualExt, $allowed)){
             move_uploaded_file($fileTmpName, $fileDestination);
             $ruta = $fileDestination;
             
-            header("Location: index.php?page=1&status=uploadsuccess&ruta=$fileDestination");
+            header("Location: index.php?page=1&status=uploadsuccess&ruta=$ruta");
 
         }else{
             header("Location: index.php?error?error=C");
