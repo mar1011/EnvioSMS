@@ -42,42 +42,30 @@ for ($row = 2; $row <= $highestRow; ++$row) {
     "banco"=>$banco
     );
 
-    //json con los datos del array
-/*if(file_exists("datos.json")){
-    $contenido = file_get_contents("datos.json");
-    $data = json_decode($contenido);
-    array_push($data, $datos);
-    file_put_contents("datos.json",json_encode($data));
-
-}else{
-        $data=Array();
-        array_push($data,$datos);
-        $f=fopen("datos.json","w");
-        fwrite($f,json_encode($datos));
-        fclose($f);
-}*/
 //aumento el contador
 $counter = $counter + 1;
-}
-
-var_dump($datos);
 
 if($radiobuton == 'deuda'){
 
-   $leer =fopen('merch\deuda\descripcion.txt','r');
-while(!feof($leer)){
-    $linea = fgets($leer); 
+    
+$string= "|nombre| refinancie su deuda con |banco| a una tasa super baja o cancele quitas extraordinarias!
+Llame al 01152771870";
 
-}
-//fclose($leer);
+$string= str_replace('|nombre|', $nombre, $string);
+echo str_replace('|banco|', $banco, $string); 
+echo '<br>';
+
 
 }else if($radiobuton == 'evite'){
 
-    $leer =fopen($radiobuton.'/descripcion.txt','r');
-    while(!feof($leer)){
-        $linea = fgets($leer);
-    
-    }
-    fclose($leer);
+ $string= "|nombre| EVITE REMATE JUDICIAL POR DEUDA CON |banco| LLAME URGENTEMENTE AL 01152771850";   
+ $string= str_replace('|nombre|', $nombre, $string);
+ echo str_replace('|banco|', $banco, $string); 
+ echo '<br>';
 }
+
+}
+
+
+
 

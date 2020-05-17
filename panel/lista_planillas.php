@@ -28,8 +28,8 @@
           $ok = $_GET["ok"];
           $color = "success";
 
-            if($ok == "merch_borrado"):
-                $m = !empty($_GET["merch"]) ? $_GET["merch"] : "";
+            if($ok == "planilla_borrado"):
+                $m = !empty($_GET["planilla"]) ? $_GET["planilla"] : "";
                 $mensaje = "Se eliminó correctamente el producto: ". ucfirst($m);
             endif;
         endif;
@@ -77,23 +77,23 @@
 
   </thead>
   <?php
-    $carpeta = "../merch";
+    $carpeta = "../planilla";
     $dir = opendir($carpeta);
 
-    while ($merch = readdir($dir)):
-      if($merch != "." && $merch != ".."):
-        $imagen = count(glob("$carpeta/$merch/$merch.*")) > 0 ? glob("$carpeta/$merch/$merch.*")[0] : "../img/sin_imagen.png";
+    while ($planilla = readdir($dir)):
+      if($planilla != "." && $planilla != ".."):
+        $imagen = count(glob("$carpeta/$planilla/$planilla.*")) > 0 ? glob("$carpeta/$planilla/$planilla.*")[0] : "../img/sin_imagen.png";
     
   ?>
 
     <tbody>
   
   <tr>
-  <td><?= imprimir_detalle("$carpeta/$merch/nombre.txt","nombre"); ?></td>
-  <td><?= imprimir_detalle("$carpeta/$merch/descripcion.txt","descripcion"); ?></td>
-  <td> <img  src="<?= $imagen ?>" alt="<?= $merch ?>" width="150"></td>
-  <td><form action="borrar_merch.php" method="post">
-    <input type="hidden" value="<?= $merch ?>" name="id">
+  <td><?= imprimir_detalle("$carpeta/$planilla/nombre.txt","nombre"); ?></td>
+  <td><?= imprimir_detalle("$carpeta/$planilla/descripcion.txt","descripcion"); ?></td>
+  <td> <img  src="<?= $imagen ?>" alt="<?= $planilla ?>" width="150"></td>
+  <td><form action="borrar_planilla.php" method="post">
+    <input type="hidden" value="<?= $planilla ?>" name="id">
     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
   </form>
   </td>
