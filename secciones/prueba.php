@@ -11,7 +11,9 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 $radiobuton=$_GET['opcion'];
 //ruta
 
+
 $ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
+
 
 //array de datos
 $datos = Array();
@@ -39,13 +41,43 @@ for ($row = 2; $row <= $highestRow; ++$row) {
     "telefono"=>$telefono,
     "banco"=>$banco
     );
+
+    //json con los datos del array
+/*if(file_exists("datos.json")){
+    $contenido = file_get_contents("datos.json");
+    $data = json_decode($contenido);
+    array_push($data, $datos);
+    file_put_contents("datos.json",json_encode($data));
+
+}else{
+        $data=Array();
+        array_push($data,$datos);
+        $f=fopen("datos.json","w");
+        fwrite($f,json_encode($datos));
+        fclose($f);
+}*/
 //aumento el contador
 $counter = $counter + 1;
 }
-    
+
 var_dump($datos);
 
-if($radiobuton == 'Deuda'){
-    echo "ok";
+if($radiobuton == 'deuda'){
+
+   $leer =fopen('merch\deuda\descripcion.txt','r');
+while(!feof($leer)){
+    $linea = fgets($leer); 
+
+}
+//fclose($leer);
+
+}else if($radiobuton == 'evite'){
+
+    $leer =fopen($radiobuton.'/descripcion.txt','r');
+    while(!feof($leer)){
+        $linea = fgets($leer);
+    
+    }
+    fclose($leer);
 }
 

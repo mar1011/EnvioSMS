@@ -91,7 +91,7 @@
   <tr>
   <td><?= imprimir_detalle("$carpeta/$merch/nombre.txt","nombre"); ?></td>
   <td><?= imprimir_detalle("$carpeta/$merch/descripcion.txt","descripcion"); ?></td>
-  <td> <img  src="<?= $imagen ?>" alt="<?= $merch ?>" width="200"></td>
+  <td> <img  src="<?= $imagen ?>" alt="<?= $merch ?>" width="150"></td>
   <td><form action="borrar_merch.php" method="post">
     <input type="hidden" value="<?= $merch ?>" name="id">
     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>

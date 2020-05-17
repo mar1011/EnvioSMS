@@ -15,15 +15,16 @@
                     <input type="file" name="file"> 
 
                   <div class="form-check">
-                      <input class="form-check-input" name="opcion[]" type="radio" value="Deuda" id="planilla1" checked>
-                      <label class="form-check-label" for="Deuda">
+                      <input class="form-check-input" name="opcion[]" type="radio" value="deuda" id="deuda" checked>
+                      <label class="form-check-label" for="deuda">
                        Mensaje de pago de Deuda
                     </label>
                   </div>
 
-                  <div class="form-check">      
-                        <input class="form-check-input" name="opcion[]" type="radio" value="Acreditado" id="planilla2"> 
-                        <label class="form-check-label" for="Pago">
+          
+                    <div class="form-check">      
+                        <input class="form-check-input" name="opcion[]" type="radio" value="evite" id="evite"> 
+                        <label class="form-check-label" for="evite">
                         Mensaje de Remate Judicial
                       </label>
                     </div>

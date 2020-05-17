@@ -8,38 +8,41 @@ include_once('../funcion.php');
 //$_FILES["imagen"]["type"];
 
 //$_FILES["imagen"]["size"];
-$galeria = $_POST["id"];
+$nombre = $_POST["nombre"];
 $descripcion = $_POST["descripcion"];
 
 //var_dump($_FILES);
 
 //chequear que los datos nombre y descripcion no estén vacíos
 
-if(empty($_POST["descripcion"]) || empty($_POST["id"]) ):
-    header("Location:index.php?seccion=1&error=descripcion");
+if(empty($_POST["nombre"]) || empty($_POST["descripcion"])):
+    header("Location:index.php?seccion=0&error=nombre/desc");
     die();
 endif;
 
 //chequear que el nombre del archivo, no coincida con el de una carpeta con is_dir
-if(is_dir("../galeria/$galeria")):
-    header("Location: index.php?seccion=1&error=carga");
+if(is_dir("../merch/$nombre")):
+    header("Location: index.php?seccion=0&error=carga");
     die();
 endif;
 
 
 //creo la carpeta
-   mkdir("../galeria/$galeria");
+   mkdir("../merch/$nombre");
 
 
+//guardar nombre
 
+$nombre = $_POST["nombre"];
+file_put_contents("../merch/$nombre/nombre.txt",$nombre);
 
 // creamos la descripción
 $descripcion = $_POST["descripcion"];
-file_put_contents("../galeria/$galeria/descripcion.txt",$descripcion);
+file_put_contents("../merch/$nombre/descripcion.txt",$descripcion);
 //chequear que el tamaño de la imágen sea mayor a cero
 
 if(!empty($_FILES) && ($_FILES["imagen"]["size"] ==0)):
-    header("Location:index.php?seccion=1&error=tamaño");
+    header("Location:index.php?seccion=0&error=tamaño");
     die();
 endif;    
 
@@ -53,16 +56,16 @@ if($imagen["type"] == "image/jpeg"):
     $imagenOriginal = imagecreatefromjpeg($imagen["tmp_name"]);
     
 else:    
-    header("Location: index.php?seccion=1&error=formato");
+    header("Location: index.php?seccion=0&error=formato");
     die();
 endif;
 
-$nomOriginal = $_POST["id"];
+$nomOriginal = $_POST["nombre"];
 
 $nombre = nombre_limpio($nomOriginal);
 
 
-chmod("../galeria",777);
+chmod("../merch",777);
 
  // valores originales
  $anchoOriginal = imagesx($imagenOriginal);
@@ -77,7 +80,7 @@ chmod("../galeria",777);
 $imagenCopia = imagecreatetruecolor($anchoNuevo,$altoNuevo); 
 
 
-$destino = "../galeria/$galeria/$galeria.$formato";
+$destino = "../merch/$nombre/$nombre.$formato";
 if($imagen["type"] == "image/jpeg"):
 // copiar la imagen original en el lienzo nuevo
 $lienzoNuevo = imagecopyresampled($imagenCopia,$imagenOriginal,0,0,0,0,$anchoNuevo,$altoNuevo,$anchoOriginal,$altoOriginal);
@@ -89,5 +92,5 @@ imagedestroy($imagenCopia);
 
 $nombre= ucfirst(strtolower($nombre));
 
-header("Location:index.php?seccion=1&subida=$nomOriginal");
+header("Location:index.php?seccion=0&subida=$nomOriginal");
 

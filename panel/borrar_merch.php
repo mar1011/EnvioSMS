@@ -12,30 +12,31 @@ Redireccionas al usuario al listado con un mensajito de que se borro el merch
  */
 
 if(empty($_POST["id"])):
-    header("Location:index.php?seccion=1&error=sin_foto");
+    header("Location:index.php?seccion=0&error=sin_merch");
     die();
 endif;
 
-$galeria = $_POST["id"];
+$merch = $_POST["id"];
 
-if(!is_dir("../galeria/$galeria")):
-    header("Location:index.php?seccion=1&error=foto");
+if(!is_dir("../merch/$merch")):
+    header("Location:index.php?seccion=0&error=merch");
     die();
 endif;
 
 
-$carpeta = opendir("../galeria/$galeria");
+$carpeta = opendir("../merch/$merch");
 
 while($file = readdir($carpeta)){
     if($file != "." && $file != ".."){
 
-        unlink("../galeria/$galeria/$file");
+        unlink("../merch/$merch/$file");
         
     }
 }
 
-rmdir("../galeria/$galeria");
+rmdir("../merch/$merch");
 
-header("Location:index.php?seccion=1&ok=planilla_borrada&galeria=$galeria");
+header("Location:index.php?seccion=0h&ok=merch_borrado&merch=$merch");
+
 
 
