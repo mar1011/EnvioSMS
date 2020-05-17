@@ -4,13 +4,13 @@ include_once("secciones/prueba.php");
 
 if (isset($_POST['submit'])){
 
-if(isset($_POST['opcion']) && in_array('Deuda', $_POST['opcion']))
+if(isset($_POST['opcion']) && in_array('deuda', $_POST['opcion']))
 {
-    $radiobutton = 'Deuda';
+    $radiobutton = 'deuda';
 }
-if(isset($_POST['opcion']) && in_array('Remate', $_POST['opcion']))
+if(isset($_POST['opcion']) && in_array('evite', $_POST['opcion']))
 {
-    $radiobutton ='Remate';
+    $radiobutton ='evite';
 }
     //El archivo que se cargó
 $file = $_FILES['file'];
