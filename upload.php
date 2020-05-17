@@ -1,7 +1,17 @@
 <?php
 include_once("secciones/prueba.php");
 
+
 if (isset($_POST['submit'])){
+
+if(isset($_POST['opcion']) && in_array('Deuda', $_POST['opcion']))
+{
+    $radiobutton = 'Deuda';
+}
+if(isset($_POST['opcion']) && in_array('Remate', $_POST['opcion']))
+{
+    $radiobutton ='Remate';
+}
     //El archivo que se cargó
 $file = $_FILES['file'];
 
@@ -31,9 +41,8 @@ if (in_array($fileActualExt, $allowed)){
             $fileDestination = 'uploads/'. $fileNewName;
             move_uploaded_file($fileTmpName, $fileDestination);
             $ruta = $fileDestination;
-            
-            header("Location: index.php?page=1&status=uploadsuccess&ruta=$ruta");
 
+            header("Location: index.php?page=1&status=uploadsuccess&ruta=$ruta&opcion=$radiobutton");
         }else{
             header("Location: index.php?error?error=C");
             echo "El archivo excede el tamaño permitido!";

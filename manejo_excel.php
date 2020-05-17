@@ -1,54 +1,53 @@
 <?php
 //llamado al archivo autoload
 require 'vendor/autoload.php';
+
+
 //cargar la clase de phpspreadsheet para manejo de 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-//Para Crear un archivo Excel y ponerle datos
-/*
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
- 
-$spreadsheet = new Spreadsheet();
-$sheet = $spreadsheet->getActiveSheet();
-$sheet->setCellValue('A1', 'Hello World !');
-
-$writer = new Xlsx($spreadsheet);
-$writer->save('hello world.xlsx'); */
-
-
+//$archivo=$_GET['ruta'];
 //ruta
-$ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
 
-//$ruta=isset($_GET['file']);
+//$ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
 
+//$hola = "'uploads/".$archivo."'";
+
+//recupero la ruta de la URL 
+
+//echo $hola;
+
+function manejoExcel ($ruta){
+//array de datos
+$datos = Array();
+//contador
+$counter = 0;
 /** Load $inputFileName to a Spreadsheet Object  **/
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($ruta);
 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 $spreadsheet = $reader->load($ruta);
 
-$sheet = $spreadsheet->getActiveSheet();
 
-//$sheet = $spreadsheet->getSheet(0);
+$worksheet = $spreadsheet->getActiveSheet();
+// averiguar el maximo de filas
+$highestRow = $worksheet->getHighestRow(); // e.g. 10
 
-$sheet = $spreadsheet->getSheetByName("Hoja1");
+for ($row = 2; $row <= $highestRow; ++$row) {
+    
+    $nombre = $worksheet->getCell('A'.$row)->getValue();
+    $telefono= $worksheet->getCell('B'.$row)->getValue();
+    $banco = $worksheet->getCell('C'.$row)->getValue();
 
-
-echo '<table border="1" cellpadding="8" style="margin-left:250px;">';
-
-foreach ($sheet->getRowIterator() as $row){
-    $cellIterator = $row->getCellIterator();
-    $cellIterator->setIterateOnlyExistingCells(false);
-    echo '<tr>';
-    foreach ($cellIterator as $cell){
-        if(!is_null($cell)){
-            //el dato de la celda
-            $value = $cell->getCalculatedValue();
-            echo '<td>' . $value .'</td>';
-        }
-    }
-
-    echo '</tr>';
+   //array dinámico
+   $datos[$counter] = Array(
+    "nombre"=>$nombre,
+    "telefono"=>$telefono,
+    "banco"=>$banco
+    );
+//aumento el contador
+$counter = $counter + 1;
 }
-echo '</table>';
+    
 
+}
+//var_dump($datos);

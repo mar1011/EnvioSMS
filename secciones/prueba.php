@@ -2,16 +2,16 @@
 //llamado al archivo autoload
 require 'vendor/autoload.php';
 
+
 //cargar la clase de phpspreadsheet para manejo de 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
+//$ruta=$_GET['ruta'];
+
+$radiobuton=$_GET['opcion'];
 //ruta
 
 $ruta = 'uploads/5eb86c1a4a0ec8.28811001.xlsx';
-
-//recupero la ruta de la URL 
-//$ruta=$_GET["ruta"];
-//echo $ruta;
 
 //array de datos
 $datos = Array();
@@ -44,4 +44,8 @@ $counter = $counter + 1;
 }
     
 var_dump($datos);
+
+if($radiobuton == 'Deuda'){
+    echo "ok";
+}
 

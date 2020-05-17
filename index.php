@@ -173,7 +173,7 @@ if(!empty($_GET["page"])){
         include_once("secciones/prueba.php");
     }
     if($_GET["page"]==2){
-        include_once("secciones/galeria.php");
+        include_once("secciones/merch.php");
     }
     if($_GET["page"]==4){
         include_once("secciones/registro.php");

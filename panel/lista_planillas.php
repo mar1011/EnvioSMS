@@ -1,6 +1,7 @@
 
+
   <!-- TABLA -->
-<div class="container">
+  <div class="container">
   <div class="row mt-3">
     <div class="col-12">
     <?php
@@ -8,12 +9,16 @@
             $error = $_GET["error"];
             $color="danger";
 
-            if($error == "descripcion"):
-                  $mensaje = "No puede quedar vacío el campo <strong>descripción</strong>";    
+            if($error == "nombre/desc"):
+                $mensaje = "No puede quedar vacío el campo <strong>nombre</strong> o <strong>descripción </strong>";
+            elseif($error == "descripcion"):
+                  $mensaje = "No puede quedar vacío el campo de descripción";    
             elseif($error == "formato"):
                  $mensaje = "El formato de la imagen debe ser JPG";
             elseif($error == "tamaño"):
-                  $mensaje = "Hubo un problema con subir la foto";
+                  $mensaje = "Hubo un problema con subir la imágen";
+            elseif($error == "carga"):
+                  $mensaje = "Ya hay un producto con ese mismo nombre";    
             else:
                 $mensaje = "ERROR";
             endif;
@@ -23,9 +28,9 @@
           $ok = $_GET["ok"];
           $color = "success";
 
-            if($ok == "foto_borrada"):
-                $m = !empty($_GET["galeria"]) ? $_GET["galeria"] : "";
-                $mensaje = "Se eliminó correctamente la foto: ". ucfirst($m);
+            if($ok == "merch_borrado"):
+                $m = !empty($_GET["merch"]) ? $_GET["merch"] : "";
+                $mensaje = "Se eliminó correctamente el producto: ". ucfirst($m);
             endif;
         endif;
 
@@ -52,7 +57,7 @@
         <span aria-hidden="true">x</span>
         <span class="sr-only">Close</span>
     </button>
-    <strong>Exito!</strong> Se subio la planilla: <?= $_GET["subida"] ?>.
+    <strong>Exito!</strong> Se subio el producto: <?= $_GET["subida"] ?>.
 </div>
       <?php
       endif;
@@ -64,6 +69,7 @@
   <thead>
 
   <tr>
+  <th>Nombre</th>
   <th>Descripción</th>
   <th>Imagen</th>
   <th>Acciones</th>
@@ -71,22 +77,23 @@
 
   </thead>
   <?php
-    $carpeta = "../galeria";
+    $carpeta = "../merch";
     $dir = opendir($carpeta);
 
-    while ($galeria = readdir($dir)):
-      if($galeria != "." && $galeria != ".."):
-        $foto = count(glob("$carpeta/$galeria/$galeria.*")) > 0 ? glob("$carpeta/$galeria/$galeria.*")[0] : "../img/sin_imagen.png";
+    while ($merch = readdir($dir)):
+      if($merch != "." && $merch != ".."):
+        $imagen = count(glob("$carpeta/$merch/$merch.*")) > 0 ? glob("$carpeta/$merch/$merch.*")[0] : "../img/sin_imagen.png";
     
   ?>
 
     <tbody>
   
   <tr>
-  <td><?= imprimir_detalle("$carpeta/$galeria/descripcion.txt","descripcion"); ?></td>
-  <td> <img  src="<?= $foto ?>" alt="<?= imprimir_detalle("$carpeta/$galeria/descripcion.txt","descripcion"); ?>" width="200"></td>
-  <td><form action="borrar_foto.php" method="post">
-    <input type="hidden" value="<?= $galeria ?>" name="id">
+  <td><?= imprimir_detalle("$carpeta/$merch/nombre.txt","nombre"); ?></td>
+  <td><?= imprimir_detalle("$carpeta/$merch/descripcion.txt","descripcion"); ?></td>
+  <td> <img  src="<?= $imagen ?>" alt="<?= $merch ?>" width="200"></td>
+  <td><form action="borrar_merch.php" method="post">
+    <input type="hidden" value="<?= $merch ?>" name="id">
     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
   </form>
   </td>

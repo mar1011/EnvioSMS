@@ -13,3 +13,6 @@ $nav_panel = [];
 $footer = [];
 $footer[]=["href" => "https://github.com/mar1011/EnvioSMS", "target" => "_blank", "img" => "img/github.png" , "alt" => "GitHub", "width" => "30", "title" => "GitHub" ];
 
+$opcion=[];
+$opcion=["op1" => "Planilla1"];
+$opcion=["op2" => "Planilla2"];

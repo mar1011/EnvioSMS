@@ -9,11 +9,29 @@
                  <p><span>
                  Seleccione el archivo de Excel que desea cargar 
                  </span></p>
+
                   <!--FORMULARIO-->
                   <form action="upload.php" method="POST" enctype="multipart/form-data">
                     <input type="file" name="file"> 
-                    <button type="submit" name="submit">Cargar Excel</button>
+
+                  <div class="form-check">
+                      <input class="form-check-input" name="opcion[]" type="radio" value="Deuda" id="planilla1" checked>
+                      <label class="form-check-label" for="Deuda">
+                       Mensaje de pago de Deuda
+                    </label>
+                  </div>
+
+                  <div class="form-check">      
+                        <input class="form-check-input" name="opcion[]" type="radio" value="Acreditado" id="planilla2"> 
+                        <label class="form-check-label" for="Pago">
+                        Mensaje de Remate Judicial
+                      </label>
+                    </div>
+
+                    <button type="submit" name="submit" value= "Result" >Enviar SMS</button>
                     </form>
+         
+
                </div>       
     </div>
                
