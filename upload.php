@@ -1,17 +1,16 @@
 <?php
 include_once("secciones/prueba.php");
 
-
-if (isset($_POST['submit'])){
-
-if(isset($_POST['opcion']) && in_array('deuda', $_POST['opcion']))
+if (isset($_POST['submit']) && isset($_FILES))
 {
-    $radiobutton = 'deuda';
-}
-if(isset($_POST['opcion']) && in_array('evite', $_POST['opcion']))
-{
-    $radiobutton ='evite';
-}
+    if(isset($_POST['opcion']))
+    {
+        $radiobutton = $_POST['opcion'];
+    }
+
+    
+
+
     //El archivo que se cargó
 $file = $_FILES['file'];
 
@@ -32,31 +31,41 @@ $fileActualExt = strtolower(end($fileExt));
 $allowed = array('xlsx', 'xlsm', 'xltx', 'xls');
 
 // cadena de if de validaciones
-if (in_array($fileActualExt, $allowed)){
+if (in_array($fileActualExt, $allowed))
+{
 
-    if ($fileError === 0){
-        if ($fileSize < 1000000){
+    if ($fileError === 0)
+    {
+        if ($fileSize < 1000000)
+        {
             //renombrar el archivo que se guardará en la carpeta con un ID único
             $fileNewName = uniqid('', true).".".$fileActualExt;
             $fileDestination = 'uploads/'. $fileNewName;
             move_uploaded_file($fileTmpName, $fileDestination);
             $ruta = $fileDestination;
-
-            header("Location: index.php?page=1&status=uploadsuccess&ruta=$ruta&opcion=$radiobutton");
-        }else{
+            header("Location:index.php?page=1&opcion=$radiobutton&ruta=$ruta");
+            
+        }
+        else
+        {
             header("Location: index.php?error?error=C");
             echo "El archivo excede el tamaño permitido!";
         }
-    }else{
+    }else
+    {
         header("Location: index.php?error?error=B");
         echo "Hubo un error, cargando el archivo!";
     }
 
 }else{
-    header("Location: index.php?error?error=B");
+   header("Location: index.php?error?error=B");
     echo "Archivo no permitido!";
 }
 
-}
+}else 
+{
+    header("Location: index.php?error?error=B");
 
+}
+exit();
 ?>

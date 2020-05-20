@@ -166,14 +166,18 @@ endif;
 </header>              
 <?php
 
-if(!empty($_GET["page"])){
+$mensajes = ontenerContenido("planilla");
+
+if(!empty($_GET["page"]))
+{
     if($_GET["page"]==0){
-        include_once("secciones/inicio.php");
-    }if($_GET["page"]==1){
-        include_once("secciones/prueba.php");
+        include_once("secciones/inicio.php?men=$mensajes");
     }
     if($_GET["page"]==2){
         include_once("secciones/planilla.php");
+    }
+    if($_GET["page"]==1){
+        include_once("secciones/manejoExcel.php");
     }
     if($_GET["page"]==4){
         include_once("secciones/registro.php");
@@ -181,9 +185,11 @@ if(!empty($_GET["page"])){
     if($_GET["page"]==5){
         include_once("secciones/login.php");
     }
+   
     if($_GET["page"]>=7){
         include_once("secciones/error.php");
     }
+   
     if( $_GET["page"]<0){
      include_once("secciones/error.php"); 
     }

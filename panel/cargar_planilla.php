@@ -10,7 +10,7 @@
 <div class="row">
 
 <div class="col-6 offset-3">
-<form action="procesar_merch.php" enctype="multipart/form-data" method="POST" class=" p-3">
+<form action="procesar_planilla.php" enctype="multipart/form-data" method="POST" class=" p-3">
 <div class="form-group">
   <label class="frase2" for="nombre">Nombre</label>
   <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre del mensaje">

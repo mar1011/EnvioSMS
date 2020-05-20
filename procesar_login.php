@@ -54,9 +54,12 @@ $_SESSION["usuario"] = [
     "email" => $email,
     "usuario" => file_get_contents("usuarios/$email/usuario.txt"),
     "rol" => file_get_contents("usuarios/$email/rol.txt"),
+    "mensajes",
+    "telefonos"
 ];
 
-
+$_SESSION["mensajes"];
+$_SESSION["telefonos"];
 $_SESSION["login"] = true;
 
 if($_SESSION["usuario"]["rol"] == "admin"):
